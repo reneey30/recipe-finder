@@ -1,5 +1,9 @@
-# recipe-finder
+# Recipe Finder
 
+## Languages Used
+
+
+## Description
 Getting a good recipe online takes time especially making a decision on what to prepare when one is in a hurry. Having a way to get recipes based on ingredients come in handy in such a situation.
 
 This project will create a website that lists three choices of recipes based on ingredients the user provided. 

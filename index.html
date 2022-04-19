@@ -23,12 +23,12 @@
       <!-- Heading -->
       <nav class="navbar navbar-dark bg-primary">
         <div class="container-fluid">
-          <span class="navbar-brand mb-0 h1">Recipe Finder</span>
+          <span class="navbar-brand h1">Recipe Finder</span>
         </div>
       </nav>
 
       <!-- Container A -->
-      <div class="container">
+      <div class="container cont-A">
 
         <!-- list of ingredients picked -->
         <div class="row">
@@ -52,21 +52,96 @@
         </div>
 
         <!-- Submit button -->
-        <button type="submit" class="btn btn-dark btn-lg">Get Recipes</button>
+        <button type="button" class="btn btn-dark btn-lg" id="get-recipes">Get Recipes</button>
 
       </div>
 
       <!-- Container B -->
-      <div class="container">
+      <div class="container cont-B">
 
           <!-- header for container B -->
-          <div class="row"></div>
+          <div class="row">
+              <h3>Recipes</h3>
+          </div>
 
           <!-- Cards with ingredients -->
-          <div class="row"></div>
+          <div class="row">
+            <div class="row">
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Recipe 1</h5>
+                    </div>
+                    <div class="pb-2">
+                        <img src="https://spoonacular.com/recipeImages/716429-556x370.jpg" class="card-img-top" alt="...">
+                    </div>
+                    
+                    <h5>Ingredients</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Tomatoes</li>
+                        <li class="list-group-item">Garlic</li>
+                        <li class="list-group-item">Potatoes</li>
+                    </ul>
+                    <div class="card-body">
+                        <h5>Instructions</h5>
+                        <a href="https://spoonacular.com/pasta-with-garlic-scallions-cauliflower-breadcrumbs-716429" class="card-link">Read more...</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                      <div class="card-body">
+                          <h5 class="card-title">Recipe 2</h5>
+                      </div>
+                      <div class="pb-2">
+                          <img src="https://spoonacular.com/recipeImages/716429-556x370.jpg" class="card-img-top" alt="...">
+                      </div>
+                      
+                      <h5>Ingredients</h5>
+                      <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Tomatoes</li>
+                          <li class="list-group-item">Garlic</li>
+                          <li class="list-group-item">Potatoes</li>
+                      </ul>
+                      <div class="card-body">
+                          <h5>Instructions</h5>
+                          <a href="https://spoonacular.com/pasta-with-garlic-scallions-cauliflower-breadcrumbs-716429" class="card-link">Read more...</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="card">
+                      <div class="card-body">
+                          <h5 class="card-title">Recipe 3</h5>
+                      </div>
+                      <div class="pb-2">
+                          <img src="https://spoonacular.com/recipeImages/716429-556x370.jpg" class="card-img-top" alt="...">
+                      </div>
+                      
+                      <h5>Ingredients</h5>
+                      <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Tomatoes</li>
+                          <li class="list-group-item">Garlic</li>
+                          <li class="list-group-item">Potatoes</li>
+                      </ul>
+                      <div class="card-body">
+                          <h5>Instructions</h5>
+                          <a href="https://spoonacular.com/pasta-with-garlic-scallions-cauliflower-breadcrumbs-716429" class="card-link">Read more...</a>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
 
           <!-- Button Group - Spin Again: Button, Start Over: Button -->
-          <div class="row"></div>
+          <div class="row row-cols-auto">
+            <div class="col">
+            <button type="button" class="btn btn-dark btn-lg" id="spin-again">Spin Again</button>
+        </div>
+            <div class="col">
+            <button type="button" class="btn btn-dark btn-lg" id="start-over">Start Over</button>
+        </div>
+          </div>
 
       </div>
     </div>

@@ -53,6 +53,17 @@ function getIngredients(){
     fetch(ingredientQuery)
     .then(res => res.json())
     .then(data => console.log(data))
+
+
+    // un hide container b
+    let containerB = document.getElementById("container-b");
+    containerB.classList.remove("d-none");
+
+    // hide container a
+    let containerA = document.getElementById("container-a");
+    containerA.classList.add("d-none");
+
+
     }
 //   let x = document.getElementById("user-ingredient").value;
 

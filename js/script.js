@@ -19,9 +19,9 @@ let ingredientQuery = `${query1}?ingredients=${ingredientString}&apiKey=${API_KE
 
 console.log(ingredientQuery);
 
-fetch(ingredientQuery)
-.then(res => res.json())
-.then(data => console.log(data))
+// fetch(ingredientQuery)
+// .then(res => res.json())
+// .then(data => console.log(data))
 
 
 

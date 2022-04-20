@@ -5,6 +5,8 @@ const API_KEY = "e74950d89dbe4c6a9349da28a66873bd";
 
 const joiner = ",+"
 
+let recipes = [];
+
 let ingredients = [];
 
 // appending ingredients to unordered list
@@ -21,26 +23,27 @@ function getIngredients(){
     let listOfIngredients = document.getElementById("ingredient-list").getElementsByTagName("li");
     
     for (let item of listOfIngredients) {
-        console.log(item.innerText);
+        
         ingredients.push(item.innerText);
-        console.log(ingredients)
+        
     }
     console.log(ingredients)
+    
+    return ingredients;
+    }
 
+    
+function getRecipes () {
 
-    let recipeID = 716429;
+    ingredients = getIngredients();
+        // let recipeID = 716429;
 
     let query1 = `${ENDPOINT}findByIngredients`; 
-    let query2 = `${ENDPOINT}${recipeID}/information`;
+    // let query2 = `${ENDPOINT}${recipeID}/information`;
 
-    // let ingredients = ["apples", "flour", "sugar"];
-    // let ingredients = [];
     let allIngredients = ingredients.join(joiner);
 
     console.log(allIngredients);
-
-
-    // let ingredientString = ingredients[0] + joiner + ingredients[1] + joiner + ingredients[2] + "&number=" + RECIPES_COUNT;
 
     let ingredientString = allIngredients + "&number=" + RECIPES_COUNT;
 
@@ -52,7 +55,35 @@ function getIngredients(){
 
     fetch(ingredientQuery)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(recipes => {
+        // work with data returned from API in this block
+        console.log(recipes);
+        //cards container
+        let cards = document.getElementById("cards-container").getElementsByClassName("recipe");
+        // console.log(cards);
+        let i = 0;
+
+        for (let recipe of recipes){
+            // working on each individual recipe
+            // title: recipe.title
+            // image: recipe.image
+            // ingredients: 1. ingredients not requested(missing) recipe.missedIngredients - loop thru => recipe.missedIngredients[n].name
+            //ingredients: 2. ingredients requested(in request by user) recipe.usedIngredients - loop thru => recipe.usedIngredients[n].name
+            //instructions: todo
+            console.log(recipe);
+
+            console.log(cards[i].getElementsByClassName("card-title")[0].innerText);
+            console.log(cards[i].getElementsByClassName("card-img-top")[0].currentScr);
+            console.log(cards[i].getElementsByClassName("card-img-top")[0].currentScr);
+
+            cards[i].getElementsByClassName("card-title")[0].innerText = recipe.title;
+            cards[i].getElementsByClassName("card-img-top")[0].src = recipe.image;
+
+            i++;
+            
+
+        }
+    })  
 
 
     // un hide container b
@@ -63,22 +94,53 @@ function getIngredients(){
     let containerA = document.getElementById("container-a");
     containerA.classList.add("d-none");
 
+    // clearing all ingredients listed 
+    let ul = document.getElementById("ingredient-list");
+    ul.innerHTML = "";
 
-    }
+
+}
+    
+
+
+   
+
+function startOver() {
+
+    // un hide container a
+    let containerA = document.getElementById("container-a");
+    containerA.classList.remove("d-none");
+
+    // hide container b
+    let containerB = document.getElementById("container-b");
+    containerB.classList.add("d-none");
+
+    //clear cards
+    //todo
+
+}
 //   let x = document.getElementById("user-ingredient").value;
 
 
 // button 1
 const buttonAddIngredient = document.getElementById("add-ingredient");
 
-buttonAddIngredient.onclick = function() {addIngredient(document.getElementById("user-ingredient").value)};
+buttonAddIngredient.onclick = function() {
+    addIngredient(document.getElementById("user-ingredient").value);
+    document.getElementById("user-ingredient").value = "";
+};
 
 
 // button 2
 const buttonGetRecipe = document.getElementById("get-recipes");
 
-buttonGetRecipe.onclick = function() {getIngredients()};
+buttonGetRecipe.onclick = function() {getRecipes()};
 
+// button 3 (technically button 4, button 3 is shelved for now)
+
+const buttonStartOver = document.getElementById("start-over");
+
+buttonStartOver.onclick = function() {startOver()};
 
   
 

@@ -8,33 +8,14 @@ let recipes = [];
 
 let ingredients = [];
 
-// function addList(innerText, classOfUl) {
-//     let ul = document.getElementById(classOfUl);
-//     let li = document.createElement("li");
-//     li.classList.add("list-group-item");
-//     li.appendChild(document.createTextNode(innerText));
-//     ul.appendChild(li);
-//   }
-function addList(innerText, ul) {
-    // let ul = document.getElementById(classOfUl);
+function addList(inputValue, ul) {
     let li = document.createElement("li");
     li.classList.add("list-group-item");
-    li.appendChild(document.createTextNode(innerText));
+    // li.appendChild(document.createTextNode(inputValue));
+    li.innerHTML = inputValue;
     ul.appendChild(li);
   }
 
-
-// appending ingredients to unordered list
-function addIngredient(userIngredient) {
-    let ul = document.getElementById("ingredient-list");
-    console.log(ul);
-    let li = document.createElement("li");
-    console.log(li);
-    li.classList.add("list-group-item");
-    li.appendChild(document.createTextNode(userIngredient));
-    ul.appendChild(li);
-    console.log(li);
-  }
 
 // getting list of ingredients
 function getIngredients(){
@@ -88,37 +69,33 @@ function getRecipes () {
             // ingredients: 1. ingredients not requested(missing) recipe.missedIngredients - loop thru => recipe.missedIngredients[n].name
             //ingredients: 2. ingredients requested(in request by user) recipe.usedIngredients - loop thru => recipe.usedIngredients[n].name
             //instructions: todo
-            console.log(recipe);
 
-            console.log(cards[i].getElementsByClassName("card-title")[0].innerText);
-            console.log(cards[i].getElementsByClassName("card-img-top")[0].currentScr);
-            console.log(cards[i].getElementsByClassName("list-group")[0]);
+            // console.log(recipe);
+
+            // console.log(cards[i].getElementsByClassName("card-title")[0].innerText);
+            // console.log(cards[i].getElementsByClassName("card-img-top")[0].currentScr);
+            // console.log(cards[i].getElementsByClassName("list-group")[0]);
+
+            cards[i].getElementsByClassName("card-title")[0].innerText = recipe.title;
+            cards[i].getElementsByClassName("card-img-top")[0].src = recipe.image;
 
             let listContainer = cards[i].getElementsByClassName("list-group")[0];
 
-            // loop one - add ingredients not requested to ul
-            for (let missedIngredient of recipe.missedIngredients) {
+            // loop one - add ingredients requested to ul
+ 
+            for (let usedIngredient of recipe.usedIngredients) {
 
-                // let apiIngredient = missedIngredient.name;
+                addList("<strong>" + usedIngredient.name + "</strong>", listContainer);
+            }           
+
+            // loop two - add ingredients not requested to ul
+
+            for (let missedIngredient of recipe.missedIngredients) {
 
                 addList(missedIngredient.name, listContainer);
             }
 
-            // loop two - add ingredients requested to ul
-
-            for (let usedIngredient of recipe.usedIngredients) {
-
-                // let apiIngredient = missedIngredient.name;
-
-                addList(usedIngredient.name, listContainer);
-            }
-
-            cards[i].getElementsByClassName("card-title")[0].innerText = recipe.title;
-            cards[i].getElementsByClassName("card-img-top")[0].src = recipe.image;
-            
-
-            i++;
-            
+            i++;     
         }
     })  
 
@@ -151,13 +128,18 @@ function startOver() {
     let cards = document.getElementById("cards-container").getElementsByClassName("recipe");
 
     for (let card of cards){
+        // clear title
+        card.getElementsByClassName("card-title")[0].innerText = "";
+        // clear image url
+        card.getElementsByClassName("card-img-top")[0].src = "";
+
+        // clear list of ingredients
         let listContainer = card.getElementsByClassName("list-group")[0];
         listContainer.innerHTML = "";
     }
     
 
 }
-//   let x = document.getElementById("user-ingredient").value;
 
 
 // button 1
@@ -167,7 +149,6 @@ buttonAddIngredient.onclick = function() {
     let userInput = document.getElementById("user-ingredient").value;
     let ul = document.getElementById("ingredient-list");
     addList(userInput, ul);
-    // addIngredient(userInput);
     document.getElementById("user-ingredient").value = "";
 };
 

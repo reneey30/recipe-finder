@@ -8,10 +8,10 @@ This website will do so with the least amount of clicks and lesser time than sea
 
 This website will essentially be an SPA that will take in a text input of ingredients the user has, and displays three recipes that contain the ingredient. It will use an API that takes in ingredient names and returns recipes. The API to be used is Spoonacular (https://api.spoonacluar.com)
 
-## Live link##
+## Live link ##
 http://reneey30.github.io/recipe-finder/
 
-## Installation / Setup instruction:##
+## Installation / Setup instruction: ##
 
 Open Terminal {Ctrl+Alt+T}
 git clone https://github.com/reneey30/recipe-finder.git
@@ -19,14 +19,14 @@ cd RECIPE-Finder
 code .
 
 ## Languages Used ##
-HTML
-CSS
-BootStrap
-JavaScript
+- HTML
+- CSS
+- BootStrap
+- JavaScript
 
-## Contact Information:##
+## Contact Information: ##
 If you have any question or contributions, please email me at [irene.njeru@student.moringaschool.com]
 
-## License:##
+## License: ##
 Licence Copyright (c) 2022 Irene Wanjiku
 

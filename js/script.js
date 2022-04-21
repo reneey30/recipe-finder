@@ -2,7 +2,6 @@ const ENDPOINT = "https://api.spoonacular.com/recipes/";
 const RECIPES_COUNT = 3;
 const API_KEY = "e74950d89dbe4c6a9349da28a66873bd";
 
-
 const joiner = ",+"
 
 let recipes = [];
@@ -117,14 +116,11 @@ function getRecipes () {
             cards[i].getElementsByClassName("card-title")[0].innerText = recipe.title;
             cards[i].getElementsByClassName("card-img-top")[0].src = recipe.image;
             
-    
 
             i++;
             
-
         }
     })  
-
 
     // un hide container b
     let containerB = document.getElementById("container-b");
@@ -138,12 +134,8 @@ function getRecipes () {
     let ul = document.getElementById("ingredient-list");
     ul.innerHTML = "";
 
-
 }
     
-
-
-   
 
 function startOver() {
 

@@ -14,7 +14,7 @@ http://reneey30.github.io/recipe-finder/
 ## Installation / Setup instruction:##
 
 Open Terminal {Ctrl+Alt+T}
-git clone https://github.com/reneey30/Akan-names.git
+git clone https://github.com/reneey30/recipe-finder.git
 cd RECIPE-Finder
 code .
 

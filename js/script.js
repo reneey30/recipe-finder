@@ -171,10 +171,19 @@ function startOver() {
 const buttonAddIngredient = document.getElementById("add-ingredient");
 
 buttonAddIngredient.onclick = function() {
+
     let userInput = document.getElementById("user-ingredient").value;
+    // check validity
+    
+    if (userInput == "") {
+        alert("ingredient cannot be blank!");
+        return
+    }
+
     let ul = document.getElementById("ingredient-list");
     addList(userInput, ul);
     document.getElementById("user-ingredient").value = "";
+
 };
 
 

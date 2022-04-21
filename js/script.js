@@ -9,13 +9,32 @@ let recipes = [];
 
 let ingredients = [];
 
+// function addList(innerText, classOfUl) {
+//     let ul = document.getElementById(classOfUl);
+//     let li = document.createElement("li");
+//     li.classList.add("list-group-item");
+//     li.appendChild(document.createTextNode(innerText));
+//     ul.appendChild(li);
+//   }
+function addList(innerText, ul) {
+    // let ul = document.getElementById(classOfUl);
+    let li = document.createElement("li");
+    li.classList.add("list-group-item");
+    li.appendChild(document.createTextNode(innerText));
+    ul.appendChild(li);
+  }
+
+
 // appending ingredients to unordered list
 function addIngredient(userIngredient) {
     let ul = document.getElementById("ingredient-list");
+    console.log(ul);
     let li = document.createElement("li");
+    console.log(li);
     li.classList.add("list-group-item");
     li.appendChild(document.createTextNode(userIngredient));
     ul.appendChild(li);
+    console.log(li);
   }
 
 // getting list of ingredients
@@ -74,10 +93,31 @@ function getRecipes () {
 
             console.log(cards[i].getElementsByClassName("card-title")[0].innerText);
             console.log(cards[i].getElementsByClassName("card-img-top")[0].currentScr);
-            console.log(cards[i].getElementsByClassName("card-img-top")[0].currentScr);
+            console.log(cards[i].getElementsByClassName("list-group")[0]);
+
+            let listContainer = cards[i].getElementsByClassName("list-group")[0];
+
+            // loop one - add ingredients not requested to ul
+            for (let missedIngredient of recipe.missedIngredients) {
+
+                // let apiIngredient = missedIngredient.name;
+
+                addList(missedIngredient.name, listContainer);
+            }
+
+            // loop two - add ingredients requested to ul
+
+            for (let usedIngredient of recipe.usedIngredients) {
+
+                // let apiIngredient = missedIngredient.name;
+
+                addList(usedIngredient.name, listContainer);
+            }
 
             cards[i].getElementsByClassName("card-title")[0].innerText = recipe.title;
             cards[i].getElementsByClassName("card-img-top")[0].src = recipe.image;
+            
+    
 
             i++;
             
@@ -116,7 +156,13 @@ function startOver() {
     containerB.classList.add("d-none");
 
     //clear cards
-    //todo
+    let cards = document.getElementById("cards-container").getElementsByClassName("recipe");
+
+    for (let card of cards){
+        let listContainer = card.getElementsByClassName("list-group")[0];
+        listContainer.innerHTML = "";
+    }
+    
 
 }
 //   let x = document.getElementById("user-ingredient").value;
@@ -126,7 +172,10 @@ function startOver() {
 const buttonAddIngredient = document.getElementById("add-ingredient");
 
 buttonAddIngredient.onclick = function() {
-    addIngredient(document.getElementById("user-ingredient").value);
+    let userInput = document.getElementById("user-ingredient").value;
+    let ul = document.getElementById("ingredient-list");
+    addList(userInput, ul);
+    // addIngredient(userInput);
     document.getElementById("user-ingredient").value = "";
 };
 

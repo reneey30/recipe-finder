@@ -8,6 +8,11 @@ const joiner = ",+"
 let ingredients = [];
 let recipeIds = [];
 
+// function to like a recipe
+function likeRecipe (){
+    
+}
+
 function addList(inputValue, ul) {
     let li = document.createElement("li");
     li.classList.add("list-group-item");
